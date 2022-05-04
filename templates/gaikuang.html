@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资源统计</title>
+
+</head>
+<body>
+<table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>订单id</th>
+                <th>废品类别</th>
+                <th>总金额</th>
+                <th>状态</th>
+                <th>操作</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for vo in orderslist %}
+            <tr>
+                <td>{{ vo.id }}</td>
+                <td>{{ vo.wastestype }}</td>
+                <td>{{ vo.total }}</td>
+                <td>{% if vo.status == 0 %} 新建 {% elif vo.status == 1 %} 未接受 {% elif vo.status == 2 %} 已接受 {% else %} 已完成 {% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+

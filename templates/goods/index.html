@@ -1,0 +1,32 @@
+{% extends "baseg.html" %}
+{% block content %}
+    <meta charset="utf-8">
+    <h4>
+        废品信息管理
+    </h4>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>废品id号</th>
+                <th>废品类别</th>
+                <th>单价</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for vo in goodslist %}
+            <tr>
+                <td>{{ vo.waid }}</td>
+                <td>{{ vo.wastestype }}</td>
+                <td>{{ vo.price }}</td>
+                <td>
+                    <a href="{% url 'myadmin_goodsadd' vo.id %}" class="view-link">添加</a>
+                    <a href="{% url 'myadmin_goodsdel' vo.id %}" class="view-link">删除</a>
+                    <a href="{% url 'myadmin_goodsedit' vo.id %}" class="view-link">编辑</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>                
+
+{% endblock %}

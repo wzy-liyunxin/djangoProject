@@ -1,0 +1,37 @@
+{% extends "basey.html" %}
+{% block content %}
+
+    <meta charset="utf-8">
+    <h4>
+        订单列表管理
+    </h4>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>订单id</th>
+                <th>废品类别</th>
+                <th>总金额</th>
+                <th>状态</th>
+                <th>操作</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for vo in orderslist %}
+            <tr>
+                <td>{{ vo.id }}</td>
+                <td>{{ vo.wastestype }}</td>
+                <td>{{ vo.total }}</td>
+                <td>{% if vo.status == 0 %} 新建 {% elif vo.status == 1 %} 未接受 {% elif vo.status == 2 %} 已接受 {% else %} 已完成 {% endif %}</td>
+                <td>
+                    <!-- <a href="{% url 'myadmin_ordersdel' vo.id %}" class="view-link">删除</a> -->
+                    <a href="{% url 'myadmin_ordersfabu' vo.id %}" class="view-link">发布</a>
+                    <a href="{% url 'myadmin_ordersedit' vo.id %}" class="view-link">编辑</a>
+                    <a href="{% url 'myadmin_ordersdel' vo.id %}" class="view-link">删除</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>                
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "baseg.html" %}
+ <meta charset="UTF-8">
+{% block content %}
+    <h3>
+        废品信息管理
+    </h3>
+    <form id="edit-profile" action="{% url 'myadmin_goodsupdate' wastes.id %}" class="form-horizontal" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <fieldset>
+            <legend>编辑废品信息</legend>
+            <div class="control-group">
+                <label class="control-label" for="input01">废品id：</label>
+                <div class="controls">
+                    <input type="text" name="waid" value="{{ wastes.waid }}" class="input-xlarge" id="input01"/>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="input01">废品类别：</label>
+                <div class="controls">
+                    <input type="text" name="wastestype" value="{{ wastes.wastestype }}" class="input-xlarge" id="input01"/>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="input01">单价：</label>
+                <div class="controls">
+                    <input type="text" name="price" value="{{ wastes.price }}" class="input-xlarge" id="input01"/>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">保存</button> <button type="reset" class="btn">重置</button>
+            </div>
+        </fieldset>
+    </form>
+    <br/>
+{% endblock %}

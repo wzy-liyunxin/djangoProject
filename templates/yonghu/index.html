@@ -1,0 +1,36 @@
+{% extends "basey.html" %}
+{% block content %}
+    <meta charset="utf-8">
+    <h4>
+        信息管理
+    </h4>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>账号</th>
+                <th>真实姓名</th>
+                <th>性别</th>
+                <th>地址</th>
+                <th>电话</th>
+                <th>身份</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>{{ vo.username }}</td>
+                <td>{{ vo.name }}</td>
+                <td>{% if vo.sex == 1 %} 男 {% else %} 女 {% endif %}</td>
+                <td>{{ vo.address }}</td>
+                <td>{{ vo.phone }}</td>
+                <td>{% if vo.authority == 0 %} 管理员 {% elif vo.authority == 1 %} 回收员 {% else %} 普通用户 {% endif %}</td>
+                <td>
+                    <a href="{% url 'myadmin_yonghuedit' vo.id %}" class="view-link">编辑</a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>                
+
+{% endblock %}

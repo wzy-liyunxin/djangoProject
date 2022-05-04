@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}废品回收管理系统{% endblock %}</title>
+   {% load static %}
+    <link rel='stylesheet' href='../static/css/simple-line-icons.css'>
+    <link rel='stylesheet' href='../static/css/fontawesome-all.min.css'>
+    <link rel='stylesheet' href='../static/css/styles.css'>
+    {% block css %}
+         <link rel='stylesheet' href='../static/css/styles1.css'>
+    {% endblock %}
+</head>
+<body class="sidebar-fixed header-fixed">
+<div class="page-wrapper">
+        <nav class="navbar page-header">
+
+        <a href="#" class="btn btn-link sidebar-mobile-toggle d-md-none mr-auto">
+            <i class="fa fa-bars"></i>
+        </a>
+
+        <a class="navbar-brand" href="#">
+            <span class="navbar-brand b_span">
+                废品回收管理系统
+            </span>
+        </a>
+
+        <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
+            <i class="fa fa-bars"></i>
+        </a>
+{#            <a href="" class="btn btn-link sidebar-toggle d-md-down-none" id="sidebar_toggle">#}
+{#                <i class="fa fa-bars"></i>#}
+{#            </a>#}
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item d-md-down-none">
+                    <span class="time" style="font-size: .900rem; color: #fff; margin-right: 20px"></span>
+                </li>
+
+                        <img src="../static/css/images/user.png" class="avatar avatar-sm" alt="logo">
+                        <li><a><font size="4" color="white">{{user.username}}</font></a></li>
+                        <span class="small ml-1 d-md-down-none" style="color: #fff">{{ c.name }}</span>
+
+                </li>
+            </ul>
+        </nav>
+
+    <div class="main-container">
+        <div class="sidebar">
+            <nav class="sidebar-nav">
+                <ul class="nav">
+                    <span class="nav-title">用户目录</span>
+
+
+                    <li class="nav-item">
+                        <a href="myadmin_count" class="nav-link">
+                            <i class="icon icon-pie-chart"></i> 概况
+                        </a>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-pencil"></i> 订单管理 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a href="{% url 'myadmin_addordersindex'%}" class="nav-link">创建订单</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'myadmin_ordersindex'%}" class="nav-link">
+                                    个人订单
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{% url 'myadmin_ordershisordes'%}" class="nav-link">历史订单</a>
+                            </li>
+
+{#
+                        </ul>
+                    </li>
+
+
+
+                    <span class="nav-title">系统</span>
+
+                    <li class="nav-item nav-dropdown">
+                        <a href="#" class="nav-link nav-dropdown-toggle">
+                            <i class="icon icon-settings"></i> 系统设置 <i class="fa fa-caret-left"></i>
+                        </a>
+
+                        <ul class="nav-dropdown-items">
+
+                            <li class="nav-item">
+                                <a href="{% url 'myadmin_yonghuindex' %}" class="nav-link">修改个人信息</a>
+                            </li>
+
+                            <li class="nav-item">
+
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'login' %}" class="nav-link">
+                            <i class="icon icon-user"></i>  切换账号
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" onclick="if(confirm('确定退出吗？')){href='{% url 'logout' %}'}">
+                            <i class="icon icon-power"></i> 退出登录
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="content">
+            {% block content %}
+                base.html
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+
+
+<script src="../static/demo/vendor/jquery/jquery.min.js"></script>
+<script src="../static/demo/vendor/popper.js/popper.min.js"></script>
+<script src="../static/demo/vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="../static/demo/vendor/chart.js/chart.min.js"></script>
+<script src="../static/demo/js/carbon.js"></script>
+<script src="../static/demo/js/demo.js"></script>
+        <script src="../static/js/b_demo.js"></script>
+        <script src="../static/js/time.js"></script>
+    {% block js %}
+    {% endblock %}
+</body>
+</html>
